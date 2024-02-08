@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>addWordWindow</class>
+ <widget class="QWidget" name="addWordWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>add new word</string>
+  </property>
+  <widget class="QLineEdit" name="englishInput">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>341</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="placeholderText">
+    <string>English...</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="uzbekInput">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>80</y>
+     <width>341</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="inputMethodHints">
+    <set>Qt::ImhSensitiveData</set>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+   <property name="placeholderText">
+    <string>Uzbek...</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sendBtn">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>50</y>
+     <width>93</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Send</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="menuBtn">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>650</y>
+     <width>150</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Menu</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="listOfWordsBtn">
+   <property name="geometry">
+    <rect>
+     <x>172</x>
+     <y>650</y>
+     <width>150</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>List of words</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="searchBtn">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>650</y>
+     <width>150</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>search</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
