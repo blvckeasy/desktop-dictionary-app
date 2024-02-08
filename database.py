@@ -33,8 +33,12 @@ class Database:
     
 
     def addWord(self, english: str, uzbek: str):
-        sql = f"INSERT INTO dictionary (ENGLISH, UZBEK) VALUE (%s, %s) RETURNING *;"
+        sql = f"INSERT INTO dictionary (ENGLISH, UZBEK) VALUE (%s, %s);"
         self.cursor.execute(sql, (english, uzbek))
-        newWord = self.cursor.fetchone()
         self.db.commit()
-        return newWord
+    
+    def selectWords(self):
+        sql = "SELECT * FROM dictionary;"
+        self.cursor.execute(sql)
+        words = self.cursor.fetchall()
+        return words

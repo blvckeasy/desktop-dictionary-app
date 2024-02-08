@@ -1,8 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from database import Database
 
 
 class Ui_addWordWindow(object):
     def setupUi(self, addWordWindow):
+        self.database = Database()
+
         addWordWindow.setObjectName("addWordWindow")
         addWordWindow.resize(500, 700)
         self.englishInput = QtWidgets.QLineEdit(addWordWindow)
@@ -20,7 +23,7 @@ class Ui_addWordWindow(object):
         self.uzbekInput.setInputMethodHints(QtCore.Qt.ImhSensitiveData)
         self.uzbekInput.setText("")
         self.uzbekInput.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.uzbekInput.setReadOnly(True)
+        # self.uzbekInput.setReadOnly(True)
         self.uzbekInput.setObjectName("uzbekInput")
         self.sendBtn = QtWidgets.QPushButton(addWordWindow)
         self.sendBtn.setGeometry(QtCore.QRect(390, 50, 93, 51))
@@ -38,6 +41,8 @@ class Ui_addWordWindow(object):
         self.searchBtn.setGeometry(QtCore.QRect(330, 650, 150, 28))
         self.searchBtn.setObjectName("searchBtn")
 
+        self.sendBtn.clicked.connect(self.addNewWordFunction)
+
         self.retranslateUi(addWordWindow)
         QtCore.QMetaObject.connectSlotsByName(addWordWindow)
 
@@ -50,6 +55,26 @@ class Ui_addWordWindow(object):
         self.menuBtn.setText(_translate("addWordWindow", "Menu"))
         self.listOfWordsBtn.setText(_translate("addWordWindow", "List of words"))
         self.searchBtn.setText(_translate("addWordWindow", "search"))
+
+    def addNewWordFunction(self):
+        english = self.englishInput.text().strip().lower()
+        uzbek = self.uzbekInput.text().strip().lower()
+
+        if not (english and uzbek):
+            self.openMsgBox("Ikkala inputni to'ldirish majburiy!")
+            self.englishInput.clear()
+            self.uzbekInput.clear()
+            return
+        
+        self.database.addWord(english, uzbek)
+
+    
+    def openMsgBox(self, text: str):
+        msg = QtWidgets.QMessageBox()
+        msg.setText(text)
+        msg.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
+        retval = msg.exec_()
+        return retval
 
 
 if __name__ == "__main__":

@@ -1,8 +1,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from database import Database
 
 class Ui_ListWords(object):
     def setupUi(self, Form):
+        self.database = Database()
+
         Form.setObjectName("Form")
         Form.resize(500, 700)
         self.englishLabel = QtWidgets.QLabel(Form)
@@ -32,6 +34,17 @@ class Ui_ListWords(object):
         self.menuBtn = QtWidgets.QPushButton(Form)
         self.menuBtn.setGeometry(QtCore.QRect(10, 660, 150, 28))
         self.menuBtn.setObjectName("menuBtn")
+
+        self.words = self.database.selectWords()
+
+        for word in self.words:
+            englishItem = QtWidgets.QListWidgetItem()
+            englishItem.setText(word[1])
+            self.englishList.addItem(englishItem)
+
+            uzbekItem = QtWidgets.QListWidgetItem()
+            uzbekItem.setText(word[2])
+            self.uzbekList.addItem(uzbekItem)  
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
