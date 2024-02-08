@@ -1,4 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from addNewWord import Ui_addWordWindow
+from listWords import Ui_ListWords
+from search import Ui_Search
 
 
 class Ui_Main(object):
@@ -31,6 +34,11 @@ class Ui_Main(object):
         self.exitBtn.setFont(font)
         self.exitBtn.setObjectName("exitBtn")
 
+        self.addNewWordBtn.clicked.connect(self.openAddNewWordWindow)
+        self.listOfWordBtn.clicked.connect(self.openListOfWordWindow)
+        self.searchWordBtn.clicked.connect(self.openSearchWindow)
+        self.exitBtn.clicked.connect(self.exitFunction)
+
         self.retranslateUi(Main)
         QtCore.QMetaObject.connectSlotsByName(Main)
 
@@ -42,6 +50,29 @@ class Ui_Main(object):
         self.searchWordBtn.setText(_translate("Main", "Search word"))
         self.exitBtn.setText(_translate("Main", "Exit"))
 
+    def openAddNewWordWindow(self):
+        self.addNewWordWidget = QtWidgets.QWidget()
+        self.addNewWordWindow = Ui_addWordWindow()
+        self.addNewWordWindow.setupUi(self.addNewWordWidget)
+        self.addNewWordWidget.show()
+        Main.close()
+
+    def openListOfWordWindow(self):
+        self.listOfWordWidget = QtWidgets.QWidget()
+        self.listOfWordWindow = Ui_ListWords()
+        self.listOfWordWindow.setupUi(self.listOfWordWidget)
+        self.listOfWordWidget.show()
+        Main.close()
+
+    def openSearchWindow(self):
+        self.searchWidget = QtWidgets.QWidget()
+        self.searchWindow = Ui_Search()
+        self.searchWindow.setupUi(self.searchWidget)
+        self.searchWidget.show()
+        Main.close()
+
+    def exitFunction(self):
+        Main.close()
 
 if __name__ == "__main__":
     import sys
